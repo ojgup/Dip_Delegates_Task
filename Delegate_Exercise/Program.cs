@@ -10,6 +10,9 @@ namespace Delegate_Exercise
     {
         static void Main(string[] args)
         {
+            FileHandler fileRead = new FileHandler();
+
+            fileRead.ReadFile("C:/Users/Ojas/Documents/GitHub/Dip_Delegates_Task/data.csv");
 
         }
 
