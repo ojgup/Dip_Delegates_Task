@@ -62,12 +62,12 @@ namespace FileParser {
         /// <param name="data"></param>
         /// <returns></returns>
         public List<List<string>> ParseCsv(List<string> data) {
-            
+            List<List<string>> result = new List<List<string>>();
             foreach(string line in data)
             {
-                Console.WriteLine(data);
+                result.Add(line.Split(',').ToList());
             }
-            return new List<List<string>>();  //-- return result here
+            return result;  //-- return result here
         }
     }
 }
