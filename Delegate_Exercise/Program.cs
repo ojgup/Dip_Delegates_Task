@@ -14,6 +14,12 @@ namespace Delegate_Exercise
 
             fileRead.ReadFile("C:/Users/Ojas/Documents/GitHub/Dip_Delegates_Task/data.csv");
 
+
+            CsvHandler file = new CsvHandler();
+
+            file.ProcessCsv("C/Users/Ojas/Documents/GitHub/Dip_Delegates_Task/data.csv", "", null);
+
+
         }
 
         public static List<List<string>> RemoveHashes(List<List<string>> data) {
@@ -21,11 +27,9 @@ namespace Delegate_Exercise
                 for (var index = 0; index < row.Count; index++) {
                     if(row[index][0] == '#')
                         row[index] = row[index].Remove(0,1);
- 
                 }
             }
             return data;
-            
         }
     }
 }

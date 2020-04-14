@@ -27,16 +27,12 @@ namespace FileParser {
         /// <param name="data"></param>
         /// <returns></returns>
         public List<List<string>> StripQuotes(List<List<string>> data) {
-            string r = "\"test\"";
-
-
             for(int i = 0; i < data.Count; i++)
             {
                 for(int j = 0; j < data[i].Count; j++)
                 {
-                    if (data[i][j].StartsWith("\"")){
                         data[i][j] = data[i][j].TrimStart('"');
-                    }
+                        data[i][j] = data[i][j].TrimEnd('"');
                 }
             }
             return data; //-- return result here
