@@ -10,15 +10,10 @@ namespace Delegate_Exercise
     {
         static void Main(string[] args)
         {
-            FileHandler fileRead = new FileHandler();
+            CsvHandler csvHandler = new CsvHandler();
 
-            fileRead.ReadFile("C:/Users/Ojas/Documents/GitHub/Dip_Delegates_Task/data.csv");
-
-
-            CsvHandler file = new CsvHandler();
-
-            file.ProcessCsv("C/Users/Ojas/Documents/GitHub/Dip_Delegates_Task/data.csv", "", null);
-
+            csvHandler.ProcessCsv("","",)
+            Parser parser = new Parser(RemoveHashes);
 
         }
 
