@@ -10,10 +10,12 @@ namespace Delegate_Exercise
     {
         static void Main(string[] args)
         {
+
             CsvHandler csvHandler = new CsvHandler();
 
-            csvHandler.ProcessCsv("","",)
-            Parser parser = new Parser(RemoveHashes);
+            Func<List<List<string>>, List<List<string>>> tResult = RemoveHashes;
+
+            csvHandler.ProcessCsv("data.csv", "processed_data.csv", tResult);
 
         }
 

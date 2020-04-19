@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System;
 
 namespace FileParser {
     public class DataParser {
@@ -18,6 +19,8 @@ namespace FileParser {
                     data[i][j] = data[i][j].Trim(' ');
                 }
             }
+
+            Console.WriteLine("White space stripped");
             return data; //-- return result here
         }
 

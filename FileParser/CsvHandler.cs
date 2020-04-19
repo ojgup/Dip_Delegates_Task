@@ -29,13 +29,13 @@ namespace Delegate_Exercise
 
             DataParser dataParser = new DataParser();
 
-            dataHandler = dataParser.StripWhiteSpace;
+            dataHandler += dataParser.StripWhiteSpace;
 
             dataHandler += dataParser.StripQuotes;
 
-            dataHandler(csvData);
+            List<List<string>> result = dataHandler.Invoke(csvData);
 
-            file.WriteFile(writeFile, ',', csvData);
+            file.WriteFile(writeFile, ',', result);
         }
     }
 }
