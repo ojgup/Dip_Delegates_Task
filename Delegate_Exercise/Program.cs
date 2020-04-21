@@ -13,8 +13,13 @@ namespace Delegate_Exercise
 
             CsvHandler csvHandler = new CsvHandler();
 
-            Func<List<List<string>>, List<List<string>>> tResult = RemoveHashes;
+            DataParser dataParser = new DataParser();
 
+            Func<List<List<string>>, List<List<string>>> tResult = dataParser.StripQuotes;
+
+            tResult += dataParser.StripWhiteSpace;
+            tResult += RemoveHashes;
+            
             csvHandler.ProcessCsv("data.csv", "processed_data.csv", tResult);
 
         }

@@ -27,15 +27,7 @@ namespace Delegate_Exercise
 
             List<List<string>> csvData = file.ParseCsv(fileContents);
 
-            DataParser dataParser = new DataParser();
-
-            dataHandler += dataParser.StripWhiteSpace;
-
-            dataHandler += dataParser.StripQuotes;
-
-            List<List<string>> result = dataHandler.Invoke(csvData);
-
-            file.WriteFile(writeFile, ',', result);
+            file.WriteFile(writeFile, ',', dataHandler.Invoke(csvData));
         }
     }
 }
