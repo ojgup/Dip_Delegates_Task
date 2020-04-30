@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using FileParser;
 
-namespace Delegate_Exercise
+namespace FileParser
 {
 
 

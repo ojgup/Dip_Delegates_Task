@@ -4,10 +4,7 @@ using System.Data;
 using System.Linq;
 using ObjectLibrary;
 
-
 namespace FileParser {
-    
-    //public class Person { }  // temp class delete this when Person is referenced from dll
     
     public class PersonHandler {
         public List<Person> People;
@@ -17,7 +14,19 @@ namespace FileParser {
         /// </summary>
         /// <param name="people"></param>
         public PersonHandler(List<List<string>> people) {
+            People = new List<Person>();
 
+            DataParser dataParser = new DataParser();
+            people = dataParser.StripQuotes(people);
+            people = dataParser.StripWhiteSpace(people);
+            people = dataParser.RemoveHashes(people);
+
+            for (int i = 1; i < people.Count; i++)
+            {
+                People.Add(new Person(int.Parse(people[i][0]), people[i][1],
+                    people[i][2], new DateTime(long.Parse(people[i][3]))
+                    ));
+            }
         }
 
         /// <summary>
