@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using ObjectLibrary;
 
+public delegate List<List<string>> ParseData(List<List<string>> data);
+
 namespace FileParser {
     
     public class PersonHandler {
@@ -16,10 +18,15 @@ namespace FileParser {
         public PersonHandler(List<List<string>> people) {
             People = new List<Person>();
 
+
+
             DataParser dataParser = new DataParser();
-            people = dataParser.StripQuotes(people);
-            people = dataParser.StripWhiteSpace(people);
-            people = dataParser.RemoveHashes(people);
+
+            ParseData p = new ParseData(dataParser.StripQuotes);
+            p += dataParser.StripWhiteSpace;
+            p += dataParser.RemoveHashes;
+
+            p.Invoke(people);
 
             for (int i = 1; i < people.Count; i++)
             {
@@ -46,8 +53,7 @@ namespace FileParser {
         /// <param name="id"></param>
         /// <returns></returns>
         public string GetString(int id) {
-
-            return "result";  //-- return result here
+            return "string";  //-- return result here
         }
 
         public List<Person> GetOrderBySurname() {

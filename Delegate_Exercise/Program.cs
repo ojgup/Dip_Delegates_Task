@@ -9,8 +9,8 @@ namespace Delegate_Exercise
     {
         static void Main(string[] args)
         {
-
-/**            CsvHandler csvHandler = new CsvHandler();
+            /*
+            CsvHandler csvHandler = new CsvHandler();
 
             DataParser dataParser = new DataParser();
 
@@ -25,7 +25,8 @@ namespace Delegate_Exercise
 
             Parser parser = new Parser(captializeData);
 
-            parserMethod(parser);**/
+            parserMethod(parser);
+            */
         }
 
         public static void parserMethod(Parser parser)
@@ -44,8 +45,5 @@ namespace Delegate_Exercise
             fileHandler.WriteFile("processed_data.csv", ',', parser(parseCsv));
             */
         }
-
-
-
     }
 }
