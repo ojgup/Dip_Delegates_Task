@@ -35,7 +35,9 @@ namespace FileParser {
         /// <returns></returns>
         public List<Person> GetOldest() {
 
-            return new List<Person>(); //-- return result here
+            List<Person> item = People.OrderBy(person => person.Dob).ToList();
+
+            return new List<Person> { item[0], item[1] }; //-- return result here
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace FileParser {
         }
 
         public List<Person> GetOrderBySurname() {
-            return new List<Person>();  //-- return result here
+            return People.OrderBy(person => person.Surname).ToList();  //-- return result here
         }
 
         /// <summary>
@@ -59,7 +61,19 @@ namespace FileParser {
         /// <param name="caseSensitive"></param>
         /// <returns></returns>
         public int GetNumSurnameBegins(string searchTerm, bool caseSensitive) {
-            return 0;  //-- return result here
+
+            if (!caseSensitive)
+                searchTerm = searchTerm.ToUpper()[0] + searchTerm.Substring(1, searchTerm.Length - 1).ToLower();
+
+            int searchTermMatches = 0;
+
+            foreach(Person p in People)
+            {
+                if (p.Surname.StartsWith(searchTerm))
+                    searchTermMatches++;
+            }
+
+            return searchTermMatches;  //-- return result here
         }
         
         /// <summary>
@@ -68,6 +82,11 @@ namespace FileParser {
         /// <returns></returns>
         public List<string> GetAmountBornOnEachDate() {
             List<string> result = new List<string>();
+
+            var g = People.GroupBy(person => person.Dob).OrderBy(i => i.Key);
+            foreach(var grp in g){
+                result.Add(grp.Key.ToString("dd/MM/yyyy") + " " + grp.Count());
+            }
 
             return result;  //-- return result here
         }
